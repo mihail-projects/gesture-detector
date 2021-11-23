@@ -1,48 +1,47 @@
 from flaml import AutoML
-import numpy as np
-import os
 import pandas as pd
-import glob
 import pickle
-from sklearn import svm
+from pycaret.classification import *
+
+
+dataset = pd.read_csv('recordings/data.csv')
+
+
+"""data = dataset.sample(frac=0.9, random_state=786)
+data_unseen = dataset.drop(data.index)
+
+data.reset_index(drop=True, inplace=True)
+data_unseen.reset_index(drop=True, inplace=True)
+
+print('Data for Modeling: ' + str(data.shape))
+print('Unseen Data For Predictions: ' + str(data_unseen.shape))
+
+exp_mclf101 = setup(data = data, target = 'label', session_id=123) 
+
+best = compare_models()"""
+
 
 # Initialize an AutoML instance
 automl = AutoML()
 
 # Specify automl goal and constraint
 automl_settings = {
-    "time_budget": 3600*1,  # in seconds
-    "metric": 'auto',
+    "time_budget": 3600,  # in seconds
     "task": 'classification',
     "log_file_name": "log.log",
 }
 
-all_files = glob.glob(os.path.join('recordings/*.csv'))
-df_from_each_file = (pd.read_csv(f, header=None) for f in all_files)
-data = pd.concat(df_from_each_file, ignore_index=True)
-
-labels = []
-for entry in os.scandir('recordings/'):
-    if entry.is_file():
-        labels.append(entry.name.partition('-')[0])
-labels = np.array(labels)
-
-"""clf = svm.SVC()
-clf.fit(data, labels)
-
-with open('model2.pkl', 'wb') as model:
-    pickle.dump(clf, model, pickle.HIGHEST_PROTOCOL)"""
-
 # Train with labeled input data
-automl.fit(X_train=data, y_train=labels, **automl_settings)
+automl.fit(dataframe=dataset, label='label', **automl_settings)
 
 # Predict
-print("\nPrediction:")
-print(automl.predict(data))
+print('\nPrediction:' )
+print(automl.predict(dataset))
 
 # Export the best model
-print("\nBest model:")
+print('\nBest model:')
 print(automl.model)
 
 with open('model.pkl', 'wb') as model:
     pickle.dump(automl, model, pickle.HIGHEST_PROTOCOL)
+    print('\nModel exported')

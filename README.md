@@ -8,5 +8,5 @@
    - Close window
    - Maximize/Minimize window
    - Lower/Raise volume
-   - Tab
+   - Tab/Esc/Enter
    - Arrow buttons

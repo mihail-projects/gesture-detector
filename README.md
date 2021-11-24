@@ -2,7 +2,7 @@
 
 - Make sure the camera sees your hand at all times <br>
 
-- Currently supported gestures:
+- Currently supported actions:
    - Left/Right click
    - Move window
    - Close window

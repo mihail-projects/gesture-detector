@@ -5,6 +5,7 @@
 - Currently supported gestures:
    - Left/Right click
    - Move window
+   - Close window
    - Maximize/Minimize window
    - Lower/Raise volume
    - Tab

@@ -1,5 +1,3 @@
-import random
-from tkinter import StringVar
 import cv2
 import mediapipe as mp
 import csv
@@ -8,7 +6,6 @@ import pandas as pd
 import os
 import sys
 import numpy as np
-import urllib.parse
 import keyboard
 
 mp_drawing = mp.solutions.drawing_utils

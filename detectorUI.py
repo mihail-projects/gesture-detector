@@ -27,18 +27,18 @@ def controls():
         detect_btn['state'] = DISABLED
         stop_btn['state'] = NORMAL
 
-    record_btn_img = tkinter.PhotoImage(file='record.png')
+    record_btn_img = tkinter.PhotoImage(file='Images/record.png')
     record_btn_lbl = tkinter.Label(image=record_btn_img)
     record_btn = tkinter.Button(window, image=record_btn_img, command=record, borderwidth=0)
     record_btn.place(x=10, y=10)
 
-    stop_btn_img = tkinter.PhotoImage(file='stop.png')
+    stop_btn_img = tkinter.PhotoImage(file='Images/stop.png')
     stop_btn_lbl = tkinter.Label(image=stop_btn_img)
     stop_btn = tkinter.Button(window, image=stop_btn_img, command=stop, borderwidth=0)
     stop_btn['state'] = DISABLED
     stop_btn.place(x=55, y=12)
 
-    detect_btn_img = tkinter.PhotoImage(file='detect.png')
+    detect_btn_img = tkinter.PhotoImage(file='Images/detect.png')
     detect_btn_lbl = tkinter.Label(image=detect_btn_img)
     detect_btn = tkinter.Button(window, image=detect_btn_img, command=detect, borderwidth=0)
     detect_btn['state'] = NORMAL

@@ -45,7 +45,7 @@ def detect():
                   'feature20x', 'feature20y', 'feature20z',
                   'feature21x', 'feature21y', 'feature21z']
 
-    with open("model.pkl", "rb") as model_file:
+    with open("ML/model.pkl", "rb") as model_file:
         model = pickle.load(model_file)
 
     # Webcam input:
@@ -53,12 +53,12 @@ def detect():
 
     with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
 
-        with open('recordings/data.csv', "a", newline="") as f:
+        with open('ML/data.csv', "a", newline="") as f:
 
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             fieldnames.remove('label')
 
-            if os.stat('recordings/data.csv').st_size == 0:
+            if os.stat('ML/data.csv').st_size == 0:
                 writer.writeheader()
 
             while cap.isOpened():
@@ -97,9 +97,9 @@ def detect():
 
                     if recording:
 
-                        if os.stat('recordings/data.csv').st_size > 0:
+                        if os.stat('ML/data.csv').st_size > 0:
                             sys.stdout.write("\rSamples: %i" % len(
-                                pd.read_csv('recordings/data.csv')))
+                                pd.read_csv('ML/data.csv')))
                             sys.stdout.flush()
 
                         writer.writerow({'label': gesture_name,

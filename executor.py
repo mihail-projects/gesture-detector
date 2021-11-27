@@ -2,10 +2,8 @@ import pyautogui
 import pygetwindow as gw
 
 screenWidth, screenHeight = pyautogui.size() # Get the size of the primary monitor.
-screenWidth, screenHeight(2560, 1440)
 
 currentMouseX, currentMouseY = pyautogui.position() # Get the XY position of the mouse.
-currentMouseX, currentMouseY(1314, 345)
 
 pyautogui.moveTo(100, 150) # Move the mouse to XY coordinates.
 
